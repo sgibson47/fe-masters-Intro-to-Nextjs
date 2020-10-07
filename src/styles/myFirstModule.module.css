@@ -1,0 +1,11 @@
+.link{
+    color: lightpink;
+}
+
+.link:hover{
+    color: lightsalmon;
+}
+
+.link:visited{
+    color: lightgoldenrodyellow;
+}
