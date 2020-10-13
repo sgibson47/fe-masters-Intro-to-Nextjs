@@ -17,6 +17,7 @@ const Nav = () => (
           fontSize: 3,
           cursor: 'pointer'
         }}
+        // process.env.HELP_APP_URL gets replaced by a string on build, so browser only gets the string
         href={process.env.HELP_APP_URL}
       >
         Google Home Page
