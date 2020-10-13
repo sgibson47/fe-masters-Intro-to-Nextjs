@@ -2,6 +2,44 @@
 // use require() instead 
 const { PHASE_DEVELOPMENT_SERVER} = require('next/constants')
 
+// Plugins!
+// generally named with____
+// usually you will use them by wrapping your config object with the plugin
+// e.g. 
+//  const withSass = require('@zeit/next-sass')
+//  module.exports = withSass(config)
+// may have some arguments before, but almost always takes the config obj b/c this file has to return a config object
+
+// But what if I want to use nultiple plugins? use withPlugins
+
+
+// so why use the plugins to handle env variables?  
+// to simplify hiding secret data 
+
+// Environemnt variables without plugins
+// create a file called '.env' on the root of your directory
+// then add .env to your .gitignore file so the info in it doesn't get checked into github
+// then in this file: 
+// module.exports ={
+//     env:{
+//         SECRET: -- here we'd load up the .env file
+//     }
+// }
+
+// to avoid the manual work of loading the .env file here, 
+// we'll use 2 plugins next-env and dotenv-load
+// yarn add next-env dotenv-load --dev
+// (load as a dev dependency b/c it's only going to be used for building)
+
+const nextEnv = require('next-env')
+const dotenvLoad = require('dotenv-load')
+
+dotenvLoad()
+
+const withNextEnv = nextEnv()
+
+
+
 module.exports = (phase, {defaultConfig}) => {
     // phase is the current context in which the configuration is loaded
     // There are 4 Phases:
@@ -16,7 +54,7 @@ module.exports = (phase, {defaultConfig}) => {
 
         // If you want a different config for this phase, 
         // you'd return your altered config object here
-        return {
+        return withNextEnv({
             // spread the default
             ...defaultConfig,
             // then add any modifications you'd like
@@ -26,9 +64,9 @@ module.exports = (phase, {defaultConfig}) => {
             //   }
             // then next will merge your stuff
             // Scott encourages us to not modify arguments in JS in general
-        };
+        });
     }
 
-    return defaultConfig;
+    return withNextEnv(defaultConfig);
 }
 
