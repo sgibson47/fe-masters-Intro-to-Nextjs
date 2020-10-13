@@ -4,7 +4,7 @@ import { jsx } from 'theme-ui'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-export default () => {
+const Id = () => {
   const router = useRouter()
   const { id }= router.query
 
@@ -14,3 +14,5 @@ export default () => {
     </div>
   )
 }
+
+export default Id;
