@@ -5,7 +5,7 @@ const Page = () => {
     const router = useRouter();
     const {params} = router.query;  
 
-    return (<div>Note {params[0]} Page</div>)
+    return (<div>Note {!!params ? params[0] : null} Page</div>)
 }
 
 export default Page

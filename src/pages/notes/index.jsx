@@ -15,7 +15,7 @@ const Page = () => {
             {notes.map(note => (
                 <div key={note.id}>
                     <Link key={note.id} href='/notes/[id]' as={`/notes/${note.id}`} > 
-                        <a className={styles.link}>{note.title}</a>
+                        <a>{note.title}</a>
                     </Link>
                 </div>
             ))}

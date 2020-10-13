@@ -20,6 +20,5 @@
     "build": "next build",
     "start": "next start"
   },
-
   "devDependencies": {}
 }
