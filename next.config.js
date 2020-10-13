@@ -32,7 +32,7 @@ dotenvLoad()
 // creates the plugin with the now available environemtn variables injected into it
 const withNextEnv = nextEnv()
 
-// But what if I want to use nultiple plugins? use withPlugins
+// But what if I want to use multiple plugins? use withPlugins
 const withPlugins = require('next-compose-plugins')
 const withSass = require('@zeit/next-sass')
 // then wrap the dcongif object you return in withPlugins like this:
